@@ -5,11 +5,13 @@ import { CommonModule } from '@angular/common';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
+
 
 @Component({
   selector: 'app-hotel-list',
   standalone: true,
-  imports: [CommonModule, NzTableModule, NzCardModule, NzButtonModule],
+  imports: [CommonModule, NzTableModule, NzCardModule, NzButtonModule, NzSpinModule],
   templateUrl: './hotel-list.component.html',
   styleUrls: ['./hotel-list.component.scss'],
 })

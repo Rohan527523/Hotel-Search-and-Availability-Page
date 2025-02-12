@@ -1,4 +1,6 @@
 <div class="hotel-list-container">
+    <!-- Loader while fetching data -->
+    <nz-spin *ngIf="isLoading" nzTip="Loading hotels..."></nz-spin>
   <h2 *ngIf="locationName">Hotels in {{locationName}}</h2>
 
     <!-- Showing Count -->
@@ -6,8 +8,6 @@
       Showing {{ hotels.length }} of {{ totalHotels }} hotels
   </p>
 
-  <!-- Loader while fetching data -->
-  <div *ngIf="isLoading" class="loading-spinner">Loading hotels...</div>
    <!-- Hotel Cards -->
    <div *ngFor="let hotel of hotels" class="hotel-card">
       <img [src]="hotel.heroImage" alt="Hotel Image" class="hotel-image">
