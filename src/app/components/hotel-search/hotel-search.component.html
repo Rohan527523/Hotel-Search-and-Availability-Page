@@ -1,0 +1,64 @@
+<nz-card class="search-container">
+    <!-- Header -->
+    <div class="search-header">
+      <i nz-icon nzType="arrow-left" class="back-icon"></i>
+      <h2>Hotels Search</h2>
+    </div>
+  
+    <form nz-form [formGroup]="searchForm" (ngSubmit)="onSearch()" class="search-form">
+      
+      <div class="form-row">
+        <!-- Location Field -->
+        <div class="grey-box location-field">
+          <label>City, Hotel, Area Or Building</label>
+          <input nz-input placeholder="Enter location" formControlName="location" />
+        </div>
+  
+        <!-- Check-in & Check-out -->
+        <div class="date-container">
+          <!-- Check-in -->
+          <div class="grey-box date-field">
+            <label>Check in</label>
+            <nz-date-picker formControlName="checkin_date"></nz-date-picker>
+          </div>
+  
+          <!-- Nights Badge -->
+          <div class="nights-badge">{{nightsCount}} Night</div>
+  
+          <!-- Check-out -->
+          <div class="grey-box date-field">
+            <label>Check out</label>
+            <nz-date-picker formControlName="checkout_date"></nz-date-picker>
+          </div>
+        </div>
+  
+<!-- Rooms Dropdown -->
+<div class="grey-box rooms-field">
+    <label>Rooms</label>
+    <nz-select nzPlaceHolder="Select rooms" formControlName="rooms_guests">
+      <nz-option *ngFor="let room of roomsList" [nzValue]="room" [nzLabel]="room"></nz-option>
+    </nz-select>
+  </div>
+  
+  <!-- Guests Dropdown -->
+  <div class="grey-box rooms-field">
+    <label>Guests</label>
+    <nz-select nzPlaceHolder="Select guests" formControlName="guests">
+      <nz-option *ngFor="let guest of guestsList" [nzValue]="guest" [nzLabel]="guest"></nz-option>
+    </nz-select>
+  </div>
+  
+
+        <!-- Search Button -->
+        <div class="search-btn-container">
+          <button nz-button nzType="primary" class="search-btn" [disabled]="searchForm.invalid">
+            SEARCH HOTELS
+          </button>
+        </div>
+      </div>
+    </form>
+  </nz-card>
+  
+
+  <!-- Hotel List Component (only show when searchParams is set) -->
+<app-hotel-list *ngIf="searchParams" [searchParams]="searchParams"></app-hotel-list>

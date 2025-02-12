@@ -1,0 +1,36 @@
+<div class="hotel-list-container">
+  <h2 *ngIf="locationName">Hotels in {{locationName}}</h2>
+
+    <!-- Showing Count -->
+    <p *ngIf="totalHotels > 0" class="hotel-count">
+      Showing {{ hotels.length }} of {{ totalHotels }} hotels
+  </p>
+
+  <!-- Loader while fetching data -->
+  <div *ngIf="isLoading" class="loading-spinner">Loading hotels...</div>
+   <!-- Hotel Cards -->
+   <div *ngFor="let hotel of hotels" class="hotel-card">
+      <img [src]="hotel.heroImage" alt="Hotel Image" class="hotel-image">
+  
+      <div class="hotel-info">
+        <h3>{{ hotel.name }}</h3>
+        <p class="address">📍 {{ hotel.address }}</p>
+        <p class="distance">📏 {{ hotel.distance }} km from City Center</p>
+  
+        <div class="rating">
+          ⭐ <span>{{ hotel.userReview.rating }}/5 ({{ hotel.userReview.count }} reviews)</span>
+        </div>
+  
+        <p class="facilities">
+          <span *ngFor="let facility of hotel.facilities">
+            ✅ {{ facility.name }}
+          </span>
+        </p>
+  
+        <p class="price">
+          💰 <strong>{{ hotel.rate.total | currency: 'INR' }}</strong> (Taxes: {{ hotel.rate.taxes | currency: 'INR' }})
+        </p>
+      </div>
+    </div>
+  </div>
+  
